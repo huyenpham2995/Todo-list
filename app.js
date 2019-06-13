@@ -2,14 +2,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-var app = express();
-var items=[];
+const app = express();
+let items=["Buy Food", "Cook Food"];
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 //tell the app to use ejs
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
-  var today = new Date();
+  let today = new Date();
   // var currentDay = today.getDay();
   // var day = "";
   //
@@ -22,13 +23,13 @@ app.get("/", function(req, res) {
   //   day = "Weekday";
   // }
 
-  var options = {
+  let options = {
     weekday: "long",
     day: "numeric",
     month: "long"
   };
 
-  var day = today.toLocaleDateString("en-US", options);
+  let day = today.toLocaleDateString("en-US", options);
   res.render("list", {
     kindOfDay: day,
     newListItems: items
@@ -37,7 +38,7 @@ app.get("/", function(req, res) {
 
 
 app.post("/", function(req, res) {
-  var item = req.body.newItem;
+  let item = req.body.newItem;
   //when we click submit button, we save the input inside item, after that
   //redirect to the home route (back to app.get), then res.render will have
   //the value of item and send it to list.ejs

@@ -5,22 +5,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/styles.css" class="stylesheet">
   <title>To Do List</title>
 </head>
 
 <body>
+  <div class="box" id="heading">
+    <h1><%= kindOfDay%></h1>
+  </div>
 
-  <h1><%= kindOfDay%></h1>
-  <ul>
+  <div class="box">
     <% for (var i=0; i<newListItems.length; i++) {%>
-    <li><%= newListItems[i]%></li>
-    <%}%>
-</ul>
+    <div class="item">
+      <input type="checkbox">
+      <p><%= newListItems[i]%></p>
+    </div>
+    <!--Each time a new aciton is added, a new list item will be created-->
+      <%}%>
+      <form action="/" class="" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button class="submit" name="button">+</button>
+      </form>
+  </div>
 
-<form action="/" class="" method="post">
-  <input type="text" class="" name="newItem">
-  <button class="submit" name="button">Add</button>
-</form>
+
 
 </body>
 </html>
