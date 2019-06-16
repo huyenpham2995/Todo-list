@@ -7,6 +7,7 @@ exports.getDate = function() {
     month: "long"
   };
 
+  let today = new Date();
   let day = today.toLocaleDateString("en-US", options);
 
   return day;
@@ -17,6 +18,7 @@ exports.getDay = function() {
     weekday: "long"
   };
 
+  let today = new Date();
   let day = today.toLocaleDateString("en-US", options);
 
   return day;
